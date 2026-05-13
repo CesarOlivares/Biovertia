@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BioVertia | Economía Circular Inteligente</title>
+    <style>
+        /* Diseño Orgánico y Sustentable */
+        :root {
+            --primary-green: #2e5339;
+            --light-green: #e9f0ea;
+            --accent-leaf: #6b8e23;
+            --earth-brown: #8b5a2b;
+            --bg-color: #fcfbfa;
+            --text-main: #333333;
+            --text-muted: #555555;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+        }
+
+        /* Hero Section */
+        header {
+            background-color: var(--primary-green);
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
+            border-bottom: 10px solid var(--accent-leaf);
+            border-radius: 0 0 30px 30px;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 1.5rem auto;
+            color: var(--light-green);
+        }
+
+        /* Contenedor Principal */
+        .container {
+            max-width: 1100px;
+            margin: -30px auto 0;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* Tarjetas Orgánicas */
+        section {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 10px 30px rgba(46, 83, 57, 0.08);
+            border: 1px solid #f0f0f0;
+        }
+
+        h2 {
+            color: var(--primary-green);
+            font-size: 2rem;
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h2::before {
+            content: "🌿";
+            font-size: 1.5rem;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        /* Estadísticas e Impacto */
+        .impact-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .stat-box {
+            flex: 1;
+            min-width: 200px;
+            background: var(--light-green);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-leaf);
+        }
+
+        .stat-box h3 {
+            color: var(--primary-green);
+            font-size: 2.5rem;
+            margin: 0;
+        }
+
+        .stat-box p {
+            margin: 0.5rem 0 0;
+            font-weight: 600;
+            color: var(--earth-brown);
+        }
+
+        /* Listas */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--light-green);
+            position: relative;
+            padding-left: 30px;
+        }
+
+        ul li::before {
+            content: "✓";
+            color: var(--accent-leaf);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem;
+            background: var(--primary-green);
+            color: var(--light-green);
+            margin-top: 4rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            header h1 { font-size: 2.5rem; }
+            section { padding: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>BioVertia</h1>
+        <p>Buscamos no solo la baja de costos y la CO2 neutralidad industrial, sino también empoderar a comunidades locales mediante el acceso a energía y biofertilizantes de alta calidad[cite: 10].</p>
+    </header>
+
+    <div class="container">
+        
+        <section class="grid-2">
+            <div>
+                <h2>El Desafío Agroindustrial</h2>
+                <p>Chile actualmente enfrenta un desafío en la gestión de residuos agroindustriales: solo en la industria vitivinícola, desechos como el orujo de uva suelen sub-utilizarse, mientras que el suero de leche lácteo carece de regulaciones de tratamiento eficientes[cite: 6].</p>
+                <p>La oportunidad reside en la biometanización; sin embargo, la generación de biogás actual está un punto muerto debido a la alta tasa de fallo por la inestabilidad de los procesos biológicos[cite: 7].</p>
+            </div>
+            <div>
+                <h2>Nuestra Solución (Propuesta de Valor)</h2>
+                <p>BioVertia es una solución biotecnológica e industrial que integra un reactor de co-digestión anaeróbica de estado sólido (SS-AD) con un sistema avanzado de control adaptativo[cite: 24].</p>
+                <p>Valorizamos el orujo de uva y suero de leche en una mezcla optimizada de 3:1[cite: 25]. El núcleo innovador radica en el uso de algoritmos de control para monitorear y estabilizar en tiempo real variables críticas como el pH, resolviendo el problema de la alta tasa de falla convencionales[cite: 26].</p>
+            </div>
+        </section>
+
+        <section>
+            <h2>Impacto Socio-Ambiental (ODS)</h2>
+            <p>Este proyecto se alinea estratégicamente con los Objetivos de Desarrollo Sostenible[cite: 45]:</p>
+            <ul>
+                <li><strong>ODS 7 (Energía no contaminante):</strong> Sustituimos el consumo de GLP fósil por biogás generado in situ[cite: 46].</li>
+                <li><strong>ODS 12 (Producción y consumo responsables):</strong> Cierre del ciclo técnico on-site, eliminando logística hacia vertederos[cite: 47].</li>
+                <li><strong>ODS 13 (Acción por el clima):</strong> Reducción de la huella de carbono superior al 80% y regeneración de suelos con biofertilizante premium[cite: 48].</li>
+            </ul>
+
+            <div class="impact-container">
+                <div class="stat-box">
+                    <h3>158.4</h3>
+                    <p>Ton/Año Residuos Evitados [cite: 54]</p>
+                </div>
+                <div class="stat-box">
+                    <h3>225</h3>
+                    <p>Familias Beneficiadas [cite: 55]</p>
+                </div>
+                <div class="stat-box">
+                    <h3>8.3</h3>
+                    <p>Meses (ROI Proyectado) [cite: 61]</p>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Modelo de Negocios y Escalabilidad</h2>
+            <p>Nos enfocamos en la Pyme Agroindustrial de la zona centro-sur (Viñas y Queserías), un segmento desatendido por la ingeniería tradicional, transformando un costo logístico hundido en un activo circular[cite: 90, 91, 108].</p>
+            
+            <p>Biovertia opera bajo un modelo B2B de alto impacto garantizando escalabilidad mediante un modelo financiero híbrido[cite: 134, 135]:</p>
+            <ul>
+                <li><strong>Venta de Hardware (CAPEX):</strong> Módulos de tratamiento on-site ($1,35M CLP por unidad de 450kg)[cite: 135].</li>
+                <li><strong>Suscripción SaaS (OPEX):</strong> Mensualidad ($45k-$60k CLP) por monitoreo biotecnológico remoto preventivo[cite: 135].</li>
+                <li><strong>Ventaja Competitiva:</strong> Algoritmo de Monitoreo Preventivo y secreto industrial del consorcio bacteriano[cite: 109].</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 BioVertia. Tecnología Mecatrónica para la Economía Circular.</p>
+    </footer>
+
+</body>
+</html>
