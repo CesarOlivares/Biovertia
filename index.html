@@ -4,178 +4,154 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biovertia - El Sistema Operativo de la Digestión Anaeróbica</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
     <style>
-        /* CSS Reset & Variables */
+        /* CSS Reset & Variables (CONTRASTE FUERTE BLANCO/VERDE) */
         :root {
-            --bg-color: #050b0f;
-            --surface-color: rgba(16, 25, 34, 0.7);
-            --primary: #00ff88;
-            --primary-glow: rgba(0, 255, 136, 0.4);
-            --secondary: #00a8ff;
-            --text-primary: #ffffff;
-            --text-secondary: #94a3b8;
-            --danger: #ff4757;
-            --glass-border: rgba(255, 255, 255, 0.08);
+            --bg-white: #ffffff;
+            --bg-soft-green: #f0fdf4;
+            --green-900: #022c22;
+            --green-800: #064e3b;
+            --green-700: #047857;
+            --green-600: #059669;
+            --green-500: #10b981;
+            --green-400: #34d399;
+            --green-100: #d1fae5;
+            --text-dark: var(--green-900);
+            --text-muted: var(--green-800);
+            --text-light: #ffffff;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Outfit', sans-serif; }
         
         body {
-            background-color: var(--bg-color);
-            color: var(--text-primary);
+            background-color: var(--bg-white);
+            color: var(--text-dark);
             overflow-x: hidden;
             line-height: 1.6;
         }
 
-        /* Utility Classes */
+        /* Utilidades */
         .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-        .text-gradient {
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .section { padding: 120px 0; }
-        
-        /* Glassmorphism */
-        .glass-panel {
-            background: var(--surface-color);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 24px;
-            padding: 40px;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-        }
-        .glass-panel:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 25px var(--primary-glow);
-            border-color: rgba(0, 255, 136, 0.3);
-        }
+        .section { padding: 100px 0; }
+        .text-center { text-align: center; }
+        .highlight { color: var(--green-500); }
+
+        h1 { font-size: 4.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 24px; letter-spacing: -1.5px; color: var(--text-light); text-shadow: 0 4px 20px rgba(0,0,0,0.5); }
+        h2 { font-size: 2.8rem; font-weight: 800; margin-bottom: 20px; line-height: 1.2; }
+        p { font-size: 1.15rem; margin-bottom: 20px; font-weight: 400; }
 
         /* Navbar */
         nav {
             position: fixed; top: 0; width: 100%; z-index: 1000;
-            background: rgba(5, 11, 15, 0.85);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--glass-border);
-            padding: 20px 0;
+            background: rgba(2, 44, 34, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
         }
         nav .container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-size: 2rem; font-weight: 900; letter-spacing: -1px; }
-        .logo span { color: var(--primary); }
+        .logo { font-size: 2rem; font-weight: 900; letter-spacing: -1px; color: var(--text-light); }
+        .logo span { color: var(--green-500); }
 
-        /* Hero Section */
+        /* HERO SECTION (Fondo de Imagen Dinámico) */
         .hero {
-            min-height: 100vh;
-            display: flex; align-items: center; justify-content: center;
+            height: 100vh;
+            min-height: 800px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(180deg, rgba(2, 44, 34, 0.7) 0%, rgba(2, 44, 34, 0.9) 100%), url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
             position: relative;
-            padding-top: 80px;
-            background: radial-gradient(circle at center, rgba(0, 255, 136, 0.1) 0%, rgba(5, 11, 15, 1) 70%);
+            background-attachment: fixed;
         }
-        .hero::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background-image: url('https://images.unsplash.com/photo-1518314916590-5f28bdc08391?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover; background-position: center;
-            opacity: 0.08; z-index: -1;
-        }
-        .hero-content { text-align: center; max-width: 900px; z-index: 1; animation: fadeIn 1s ease-out; }
-        .hero h1 { font-size: 4.5rem; font-weight: 900; line-height: 1.1; margin-bottom: 24px; letter-spacing: -1px; }
-        .hero p { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 40px; max-width: 750px; margin-inline: auto; font-weight: 300; }
         
-        .badge {
-            display: inline-block; padding: 8px 16px;
-            background: rgba(0, 255, 136, 0.1);
-            color: var(--primary); border: 1px solid rgba(0, 255, 136, 0.3);
-            border-radius: 50px; font-size: 0.9rem; font-weight: 600;
-            margin-bottom: 24px; letter-spacing: 1.5px; text-transform: uppercase;
+        .system-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(16, 185, 129, 0.2); color: var(--green-400);
+            padding: 8px 16px; border-radius: 50px;
+            font-size: 0.9rem; font-weight: 800; letter-spacing: 1px;
+            text-transform: uppercase; margin-bottom: 20px;
+            border: 1px solid var(--green-500);
         }
+        .pulse-dot { width: 10px; height: 10px; background: var(--green-500); border-radius: 50%; animation: pulse 2s infinite; }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); } 100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }
 
-        /* Buttons */
-        .btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-            padding: 16px 36px; border-radius: 50px;
-            font-size: 1.1rem; font-weight: 700; text-decoration: none;
-            transition: all 0.3s ease; cursor: pointer;
-            border: none;
+        /* Tarjeta del Problema Flotante */
+        .problem-card {
+            background: var(--bg-white);
+            color: var(--green-900);
+            border-radius: 24px;
+            padding: 50px;
+            margin-top: -100px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            position: relative;
+            z-index: 10;
         }
-        .btn-primary {
-            background: linear-gradient(90deg, var(--primary), #00cc6a);
-            color: #000;
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
-        }
-        .btn-primary:hover {
-            box-shadow: 0 0 40px var(--primary-glow);
-            transform: scale(1.05);
-        }
+        .problem-card h2 { color: var(--green-900); font-size: 2.2rem; }
+        
+        .circular-charts { display: flex; justify-content: center; gap: 60px; margin: 40px 0; flex-wrap: wrap; }
+        .circle-item { text-align: center; }
+        .circle-wrap { width: 160px; height: 160px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; position: relative; }
+        .fail-circle { background: conic-gradient(var(--green-600) 91%, var(--green-100) 0); }
+        .ok-circle { background: conic-gradient(var(--green-400) 9%, var(--green-100) 0); }
+        .circle-inner { width: 130px; height: 130px; background: var(--bg-white); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .circle-number { font-size: 3rem; font-weight: 900; line-height: 1; }
 
-        /* Grid Layouts */
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+        /* SECCIÓN SPLIT (Imágenes y Texto intercalados) */
+        .split-section { padding: 100px 0; background: var(--bg-soft-green); }
+        .split-row { display: flex; align-items: center; gap: 60px; margin-bottom: 80px; }
+        .split-row:nth-child(even) { flex-direction: row-reverse; }
+        .split-text { flex: 1; }
+        .split-image { flex: 1; border-radius: 24px; overflow: hidden; box-shadow: 0 20px 40px rgba(2,44,34,0.15); height: 400px; }
+        .split-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+        .split-image:hover img { transform: scale(1.05); }
+
+        /* BIOVERTIA CORE */
+        .centerpiece-section { background: var(--green-900); color: var(--text-light); padding: 100px 0; }
+        .centerpiece-section h2 { color: var(--text-light); }
+        .center-layout { position: relative; max-width: 1000px; margin: 80px auto 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+        .biovertia-core {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: var(--bg-white); color: var(--green-900); width: 240px; height: 240px; border-radius: 50%;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            font-size: 2.2rem; font-weight: 900; box-shadow: 0 0 0 15px rgba(16,185,129,0.2), 0 20px 40px rgba(0,0,0,0.4); z-index: 10;
+        }
+        .biovertia-core span { font-size: 1rem; color: var(--green-600); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
+        
+        .feature-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; transition: all 0.3s ease; backdrop-filter: blur(5px); }
+        .feature-item:hover { transform: translateY(-5px); background: rgba(16,185,129,0.1); border-color: var(--green-500); }
+        .feature-item.left { text-align: right; padding-right: 70px; }
+        .feature-item.right { text-align: left; padding-left: 70px; }
+
+        /* TIMELINE ROADMAP */
+        .timeline-section { background: var(--bg-white); }
+        .timeline { display: flex; justify-content: space-between; align-items: flex-start; position: relative; margin-top: 80px; }
+        .timeline::before { content: ''; position: absolute; top: 35px; left: 0; right: 0; height: 4px; background: var(--green-100); z-index: 0; }
+        .timeline-step { flex: 1; text-align: center; position: relative; z-index: 1; padding: 0 20px; }
+        .timeline-dot { width: 70px; height: 70px; background: var(--bg-white); border: 4px solid var(--green-100); border-radius: 50%; margin: 0 auto 25px auto; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 900; color: var(--green-400); transition: all 0.3s ease; }
+        .timeline-step.active .timeline-dot { border-color: var(--green-400); background: var(--green-500); color: var(--text-light); box-shadow: 0 0 0 10px rgba(16,185,129,0.1); }
+
+        /* TEAM & QR */
+        .team-section { background: var(--bg-soft-green); }
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .team-qr-card { background: var(--bg-white); border: 1px solid var(--green-100); border-radius: 20px; padding: 40px; text-align: center; transition: transform 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .team-qr-card:hover { transform: translateY(-10px); border-color: var(--green-500); box-shadow: 0 20px 40px rgba(16, 185, 129, 0.15); }
+        .qr-box { background: var(--bg-white); padding: 15px; border-radius: 15px; display: inline-block; margin: 20px 0; border: 1px solid var(--green-100); }
+        .qr-box img { width: 150px; height: 150px; display: block; }
+        
+        /* Banner Tracción USACH */
+        .traction-banner { background: var(--green-900); color: var(--text-light); padding: 30px; border-radius: 20px; margin-top: 60px; display: flex; align-items: center; justify-content: space-between; border-left: 8px solid var(--green-500); }
 
-        /* Problem Section */
-        .problem-section { position: relative; }
-        .problem-card { border-left: 4px solid var(--danger); }
-        .problem-card h3 { color: var(--text-primary); font-size: 1.5rem; margin-bottom: 15px; }
-        .problem-card p { color: var(--text-secondary); }
-        .problem-stat { font-size: 3.5rem; font-weight: 900; color: var(--danger); margin-bottom: 10px; line-height: 1; }
-
-        /* Solution Section */
-        .solution-section { background: linear-gradient(to bottom, #050b0f, #0a131a); position: relative; }
-        .layer-card { text-align: left; position: relative; overflow: hidden; display: flex; flex-direction: column; height: 100%; }
-        .layer-icon {
-            font-size: 2.5rem; width: 80px; height: 80px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 20px; margin-bottom: 24px;
-        }
-        .layer-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
-        .layer-card p { color: var(--text-secondary); flex-grow: 1; }
-
-        /* Impacts / KPIs */
-        .impact-number { font-size: 4rem; font-weight: 900; margin-bottom: 10px; line-height: 1; }
-        .impact-number span { font-size: 1.8rem; color: var(--text-secondary); }
-
-        /* Timeline / Current Status */
-        .status-box {
-            background: linear-gradient(135deg, rgba(0,255,136,0.05), rgba(0,168,255,0.05));
-            border: 1px solid rgba(0, 255, 136, 0.2); border-radius: 24px;
-            padding: 60px; text-align: center; margin-top: 80px;
-            position: relative; overflow: hidden;
-        }
-        .status-box::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--secondary));
-        }
-        .status-box h3 { font-size: 2.2rem; margin-bottom: 20px; }
-        .status-box p { color: var(--text-secondary); font-size: 1.2rem; max-width: 700px; margin: 0 auto; line-height: 1.8; }
-
-        /* Team */
-        .team-card { text-align: center; padding: 40px 30px; }
-        .team-avatar {
-            width: 120px; height: 120px; border-radius: 50%;
-            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.01));
-            margin: 0 auto 24px; display: flex; align-items: center; justify-content: center;
-            font-size: 3.5rem; border: 2px solid var(--glass-border);
-            transition: all 0.3s ease;
-        }
-        .team-card:hover .team-avatar { transform: scale(1.1) rotate(5deg); border-color: var(--primary); }
-        .team-card h4 { font-size: 1.4rem; margin-bottom: 8px; }
-        .team-card p { color: var(--primary); font-weight: 600; font-size: 0.95rem; margin-bottom: 15px; letter-spacing: 0.5px;}
-        .team-card .role-desc { color: var(--text-secondary); font-size: 0.9rem; line-height: 1.5; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Responsive */
         @media (max-width: 992px) {
-            .grid-2 { grid-template-columns: 1fr; gap: 40px; }
+            .split-row, .split-row:nth-child(even) { flex-direction: column; }
+            .center-layout { grid-template-columns: 1fr; gap: 20px; }
+            .biovertia-core { position: static; transform: none; margin: 40px auto; width: 200px; height: 200px; }
+            .feature-item.left, .feature-item.right { text-align: center; padding: 30px; }
             .grid-3 { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 3rem; }
-            .hero p { font-size: 1.1rem; }
-            .section { padding: 80px 0; }
+            .timeline { flex-direction: column; }
+            .timeline::before { width: 4px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
+            .timeline-step { width: 100%; margin-bottom: 50px; }
+            h1 { font-size: 3rem; }
         }
     </style>
 </head>
@@ -184,151 +160,202 @@
     <nav>
         <div class="container">
             <div class="logo">Bio<span>vertia</span></div>
-            <a href="#vision" class="btn btn-primary" style="padding: 10px 24px; font-size: 0.95rem;">Conocer Más</a>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="container hero-content">
-            <div class="badge">Deep Tech & Energías Renovables</div>
-            <h1>El <span class="text-gradient">Sistema Operativo</span> de la Digestión Anaeróbica</h1>
-            <p>No somos otro biodigestor. Transformamos reactores convencionales en sistemas ciberfísicos autónomos para liderar la transición hacia el Biogás 2.0 en Latinoamérica.</p>
-            <a href="#solucion" class="btn btn-primary">Descubrir la Solución</a>
-        </div>
-    </section>
-
-    <section id="vision" class="section">
+    <!-- HERO (Visual de Impacto) -->
+    <header class="hero text-center">
         <div class="container">
-            <div class="grid-2">
-                <div>
-                    <h2 style="font-size: 2.5rem; margin-bottom: 24px; line-height: 1.2;">Coprocesamiento Inteligente de Residuos Complejos.</h2>
-                    <p style="color: var(--text-secondary); font-size: 1.15rem; margin-bottom: 20px;">
-                        Desarrollamos un sistema de optimización de digestión anaeróbica diseñado para maximizar el rendimiento y la estabilidad operativa.
-                    </p>
-                    <p style="color: var(--text-secondary); font-size: 1.15rem;">
-                        Nuestro nicho inicial está validado en la compleja mezcla de <strong>orujo de uva y suero de leche</strong>, aportando una solución circular y rentable a las industrias vitivinícola y láctea.
-                    </p>
+            <div class="system-badge"><div class="pulse-dot"></div> Solución Industrial Activa</div>
+            <h1>La Inteligencia detrás de la Digestión Anaeróbica</h1>
+            <p style="font-size: 1.5rem; color: var(--green-100); max-width: 800px; margin: 0 auto;">Transformamos reactores convencionales en sistemas ciberfísicos autónomos para el agro.</p>
+        </div>
+    </header>
+
+    <!-- EL PROBLEMA (Card Elevada) -->
+    <div class="container">
+        <div class="problem-card text-center">
+            <h2>El 91% de las plantas de biogás falla por operar "a ciegas"</h2>
+            <p style="font-size: 1.2rem; max-width: 700px; margin: 0 auto 30px;">La falta de control de las variables biológicas genera inestabilidad estructural en el mercado.</p>
+            
+            <div class="circular-charts">
+                <div class="circle-item">
+                    <div class="circle-wrap fail-circle">
+                        <div class="circle-inner"><span class="circle-number" style="color: var(--green-600);">91%</span></div>
+                    </div>
+                    <div style="font-weight: 800; color: var(--green-900);">Fallas Biológicas</div>
                 </div>
-                <div class="glass-panel" style="text-align: center; border-color: rgba(0, 255, 136, 0.2);">
-                    <div style="font-size: 5.5rem; margin-bottom: 20px;">🍇🥛⚡</div>
-                    <h3 style="font-size: 1.8rem; margin-bottom: 15px;">De Residuo a Energía Segura</h3>
-                    <p style="color: var(--text-secondary); font-size: 1.1rem;">Visibilidad, control y valorización inteligente de subproductos agroindustriales.</p>
+                <div class="circle-item">
+                    <div class="circle-wrap ok-circle">
+                        <div class="circle-inner"><span class="circle-number" style="color: var(--green-400);">9%</span></div>
+                    </div>
+                    <div style="font-weight: 800; color: var(--green-900);">Operación Estable</div>
+                </div>
+            </div>
+
+            <div style="background: var(--bg-soft-green); padding: 25px; border-radius: 15px; border: 1px solid var(--green-100);">
+                <p style="font-size: 1.3rem; font-weight: 600; color: var(--green-900); margin: 0;">
+                    Esto genera pérdidas de <span class="highlight">$8.000 a $25.000 USD</span> por evento. <br>
+                    No es un fallo humano, es una ineficiencia en el sistema de raíz.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CÓMO FUNCIONA (Narrativa Visual) -->
+    <section class="split-section">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 60px;">
+                <h2 style="color: var(--green-900); font-size: 3.5rem;">Y ahí es donde entra <span class="highlight">Biovertia.</span></h2>
+            </div>
+
+            <!-- Fila 1: El Nicho -->
+            <div class="split-row">
+                <div class="split-text">
+                    <h2 style="color: var(--green-900);">Validado en el Terreno Real</h2>
+                    <p>Nuestro punto de entrada es la digestión de la mezcla de <strong>orujo de uva y suero de leche</strong>. Entendemos la estacionalidad y los desafíos químicos del agro en Chile.</p>
+                    <p>Al aplicar nuestra tecnología en este nicho específico, logramos que la economía circular sea finalmente predecible, escalable y altamente rentable para la industria vitivinícola y láctea.</p>
+                </div>
+                <div class="split-image">
+                    <img src="https://images.unsplash.com/photo-1591181516281-226685ec1608?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Viñedos y Orujo">
+                </div>
+            </div>
+
+            <!-- Fila 2: El Hardware/Software -->
+            <div class="split-row">
+                <div class="split-text">
+                    <h2 style="color: var(--green-900);">Sensorización e Inteligencia</h2>
+                    <p>No construimos tanques vacíos. Desarrollamos el <strong>hardware IoT de precisión</strong> que lee el pulso del biorreactor, y los modelos de <strong>Machine Learning</strong> que aprenden de él.</p>
+                    <ul style="list-style: none; padding: 0; margin-top: 20px;">
+                        <li style="margin-bottom: 10px; font-weight: 600;">✔️ 0 Fallas prevenibles al año.</li>
+                        <li style="margin-bottom: 10px; font-weight: 600;">✔️ Predicción de anomalías con 24h de anticipación.</li>
+                        <li style="margin-bottom: 10px; font-weight: 600;">✔️ KPIs claros para el operador de campo.</li>
+                    </ul>
+                </div>
+                <div class="split-image">
+                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Planta Industrial Tecnológica">
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section problem-section">
+    <!-- BIOVERTIA CORE ENGINE -->
+    <section class="centerpiece-section">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 80px;">
-                <h2 style="font-size: 3rem;">El Dolor del Mercado: <span style="color: var(--danger);">Operar a Ciegas</span></h2>
-                <p style="color: var(--text-secondary); font-size: 1.2rem; max-width: 650px; margin: 20px auto 0;">Los sistemas actuales son reactivos y funcionan como una "caja negra".</p>
-            </div>
-            <div class="grid-2">
-                <div class="glass-panel problem-card">
-                    <div class="problem-stat">91%</div>
-                    <h3 style="font-size: 1.8rem;">Impacto Económico Crítico</h3>
-                    <p style="font-size: 1.1rem;">El 91% de las plantas industriales están expuestas a fallas. Un digestor que falla una vez al año pierde hasta el <strong>40% del valor total del proyecto</strong>, con costos de entre <strong>$8.000 y $25.000 USD por evento</strong> por producción perdida.</p>
-                </div>
-                <div class="glass-panel problem-card" style="border-color: #ff9f43; border-left-color: #ff9f43;">
-                    <div class="problem-stat" style="color: #ff9f43; font-size: 2.8rem; padding-top: 10px;">Tardío</div>
-                    <h3 style="font-size: 1.8rem;">Daño Biológico Irreversible</h3>
-                    <p style="font-size: 1.1rem;">La falla se detecta cuando la producción ya se ha detenido. Además, el operador de campo no suele tener los conocimientos ni las herramientas analíticas para interpretar la compleja bioquímica del reactor.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="solucion" class="section solution-section">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 80px;">
-                <h2 style="font-size: 3rem;">Nuestra Solución: <span class="text-gradient">3 Capas Tecnológicas</span></h2>
-                <p style="color: var(--text-secondary); font-size: 1.2rem; max-width: 750px; margin: 20px auto 0;">Convertimos reactores analógicos en sistemas ciberfísicos predecibles e inteligentes.</p>
+            <div class="text-center" style="margin-bottom: 20px;">
+                <h2 style="font-size: 3rem;">Convertimos una caja negra en un sistema predecible</h2>
             </div>
             
+            <div class="center-layout">
+                <div class="feature-item left">
+                    <h3 style="color: var(--green-400);">Monitoreo Continuo</h3>
+                    <p style="color: var(--green-100);">Sensores IoT que leen el pulso bioquímico 24/7.</p>
+                </div>
+                <div class="feature-item right">
+                    <h3 style="color: var(--green-400);">Aprendizaje Predictivo</h3>
+                    <p style="color: var(--green-100);">Machine Learning que anticipa anomalías con 24h de ventaja.</p>
+                </div>
+                
+                <div class="biovertia-core">
+                    BIOVERTIA
+                    <span>Core Engine</span>
+                </div>
+                
+                <div class="feature-item left">
+                    <h3 style="color: var(--green-400);">Control Preciso</h3>
+                    <p style="color: var(--green-100);">Parámetros guiados para estabilizar la biología en tiempo real.</p>
+                </div>
+                <div class="feature-item right">
+                    <h3 style="color: var(--green-400);">KPIs Entendibles</h3>
+                    <p style="color: var(--green-100);">Métricas simples y accionables para el operador de planta.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ROADMAP -->
+    <section class="section timeline-section">
+        <div class="container">
+            <h2 class="text-center" style="font-size: 3rem; color: var(--green-900);">En qué etapa estamos</h2>
+            
+            <div class="timeline">
+                <div class="timeline-step active">
+                    <div class="timeline-dot">1</div>
+                    <h4 style="color: var(--green-900);">Desarrollo MVP</h4>
+                    <p>Construyendo el primer prototipo funcional con las cepas bacterianas base.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-dot">2</div>
+                    <h4 style="color: var(--green-900);">Alianzas Terreno</h4>
+                    <p>Validación del modelo de recolección de datos IoT con clientes industriales.</p>
+                </div>
+                <div class="timeline-step">
+                    <div class="timeline-dot">3</div>
+                    <h4 style="color: var(--green-900);">Escalamiento Pro</h4>
+                    <p>Entrenamiento de modelos predictivos específicos por residuo comercial.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM & TRACTION -->
+    <section class="section team-section">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 20px; color: var(--green-900);">Interdisciplinariedad Estratégica</h2>
+            <p class="text-center" style="max-width: 700px; margin: 0 auto 50px;">Un problema de categoría bio-industrial no se resuelve con una sola disciplina. Diseñamos un equipo fundacional capaz de unir el hardware, la potencia y la ciencia.</p>
+            
             <div class="grid-3">
-                <div class="glass-panel layer-card">
-                    <div class="layer-icon" style="color: #00ff88; background: rgba(0, 255, 136, 0.1);">📡</div>
-                    <h3>Sensorización Avanzada (IoT)</h3>
-                    <p>Hardware industrial para el monitoreo ininterrumpido de las variables críticas del proceso de digestión, capturando la salud biológica en tiempo real.</p>
+                <!-- César -->
+                <div class="team-qr-card">
+                    <h3 style="font-size: 1.6rem; color: var(--green-900); font-weight: 900;">César Olivares</h3>
+                    <div style="background: var(--green-100); color: var(--green-800); padding: 5px 15px; border-radius: 20px; font-weight: 800; display: inline-block; margin-bottom: 15px;">Ingeniería Mecatrónica</div>
+                    <p style="color: var(--green-800);">Integración IoT, modelos ciberfísicos y arquitectura del sistema.</p>
+                    <div class="qr-box">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.linkedin.com/in/cesar-olivares-lavalovich-706311396" alt="QR César">
+                    </div>
                 </div>
-                <div class="glass-panel layer-card">
-                    <div class="layer-icon" style="color: #00a8ff; background: rgba(0, 168, 255, 0.1);">🧠</div>
-                    <h3>Gemelos Digitales y ML</h3>
-                    <p>Modelamos el comportamiento bacteriano con precisión. Nuestros algoritmos predicen inestabilidades, como la acidificación, con <strong>24 a 48 horas de anticipación</strong>.</p>
+                
+                <!-- Simón -->
+                <div class="team-qr-card" style="border-color: var(--green-500); box-shadow: 0 10px 30px rgba(16,185,129,0.1);">
+                    <h3 style="font-size: 1.6rem; color: var(--green-900); font-weight: 900;">Simón</h3>
+                    <div style="background: var(--green-500); color: white; padding: 5px 15px; border-radius: 20px; font-weight: 800; display: inline-block; margin-bottom: 15px;">Cofundador</div>
+                    <p style="color: var(--green-800);">Desarrollo estratégico y gestión técnica del proyecto Biovertia.</p>
+                    <div class="qr-box">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.linkedin.com/company/biovertia/?viewAsMember=true" alt="QR Biovertia">
+                    </div>
                 </div>
-                <div class="glass-panel layer-card">
-                    <div class="layer-icon" style="color: #bf55ec; background: rgba(191, 85, 236, 0.1);">📱</div>
-                    <h3>Inteligencia Operativa</h3>
-                    <p>Una interfaz intuitiva que traduce métricas complejas en <strong>KPIs simples y accionables</strong>. Le decimos al operador exactamente qué está pasando y qué acción correctiva tomar.</p>
+
+                <!-- Benjamín -->
+                <div class="team-qr-card">
+                    <h3 style="font-size: 1.6rem; color: var(--green-900); font-weight: 900;">Benjamín Saavedra</h3>
+                    <div style="background: var(--green-100); color: var(--green-800); padding: 5px 15px; border-radius: 20px; font-weight: 800; display: inline-block; margin-bottom: 15px;">Ingeniería Eléctrica</div>
+                    <p style="color: var(--green-800);">Sistemas de potencia, automatización y control de instrumentación.</p>
+                    <div class="qr-box">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.linkedin.com/in/benjam%C3%ADn-saavedra-ingenieria-electrica/" alt="QR Benjamín">
+                    </div>
                 </div>
+            </div>
+
+            <!-- Tracción e Institucionalidad -->
+            <div class="traction-banner">
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 5px;">Validación Institucional</h3>
+                    <p style="margin: 0; color: var(--green-100);">Proyecto gestado en las aulas de la Universidad de Santiago de Chile (USACH) y destacado en el ecosistema de innovación tecnológica.</p>
+                </div>
+                <div style="font-size: 2.5rem;">🎓🚀</div>
+            </div>
+
+            <div class="text-center" style="margin-top: 40px;">
+                <p style="background: var(--bg-white); border: 1px solid var(--green-100); display: inline-block; padding: 10px 25px; border-radius: 50px; color: var(--green-900); font-weight: 600;">
+                    <span style="font-size: 1.2rem;">🧬</span> <strong>Próxima Integración:</strong> Perfil Bioquímico para fortalecer la cinética de digestión en el gemelo digital.
+                </p>
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 80px;">
-                <h2 style="font-size: 3rem;">Pilares de Impacto</h2>
-            </div>
-            <div class="grid-3" style="text-align: center;">
-                <div class="glass-panel" style="padding: 40px 20px;">
-                    <div class="impact-number text-gradient">0</div>
-                    <h3 style="margin-bottom: 15px; font-size: 1.4rem;">Fallas Prevenibles</h3>
-                    <p style="color: var(--text-secondary);">Reducimos la tasa de fallas biológicas a cero, protegiendo el Valor Presente Neto (VPN) del cliente.</p>
-                </div>
-                <div class="glass-panel" style="padding: 40px 20px;">
-                    <div class="impact-number text-gradient"><24<span>h</span></div>
-                    <h3 style="margin-bottom: 15px; font-size: 1.4rem;">Detección Rápida</h3>
-                    <p style="color: var(--text-secondary);">Reducimos el tiempo de detección de anomalías de días a menos de 24 horas, asegurando estabilidad.</p>
-                </div>
-                <div class="glass-panel" style="padding: 40px 20px;">
-                    <div class="impact-number text-gradient">100<span>%</span></div>
-                    <h3 style="margin-bottom: 15px; font-size: 1.4rem;">Escalabilidad</h3>
-                    <p style="color: var(--text-secondary);">Operación segura que impulsa la descarbonización y economía circular de la industria agroalimentaria.</p>
-                </div>
-            </div>
-
-            <div class="status-box">
-                <div class="badge" style="background: rgba(255,255,255,0.05); color: #fff; border-color: rgba(255,255,255,0.2);">Roadmap y Proyección</div>
-                <h3>Preparativos para el Primer Prototipo</h3>
-                <p>Actualmente estamos consolidando nuestro primer MVP, integrando los módulos de sensorización con nuestros modelos predictivos. Nuestro objetivo a corto plazo es la validación del prototipo en un entorno real, como primer paso sólido para escalar la solución de Biogás 2.0 en toda Latinoamérica.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section solution-section">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 80px;">
-                <h2 style="font-size: 3rem;">El Equipo Biovertia</h2>
-                <p style="color: var(--text-secondary); font-size: 1.2rem;">Interdisciplinariedad estratégica para resolver un problema complejo.</p>
-            </div>
-            <div class="grid-3" style="justify-content: center; display: flex; gap: 40px; flex-wrap: wrap;">
-                <div class="glass-panel team-card" style="flex: 1; min-width: 280px; max-width: 350px;">
-                    <div class="team-avatar">👨🏽‍💻</div>
-                    <h4>César Olivares</h4>
-                    <p>Ingeniería Mecatrónica</p>
-                    <div class="role-desc">Cofundador especializado en integración de hardware IoT, automatización industrial y arquitectura de sistemas ciberfísicos.</div>
-                </div>
-                <div class="glass-panel team-card" style="flex: 1; min-width: 280px; max-width: 350px;">
-                    <div class="team-avatar">⚡</div>
-                    <h4>Benjamín Saavedra</h4>
-                    <p>Ingeniería Eléctrica</p>
-                    <div class="role-desc">Cofundador enfocado en instrumentación de precisión, sistemas de potencia y recolección robusta de datos en planta.</div>
-                </div>
-                <div class="glass-panel team-card" style="flex: 1; min-width: 280px; max-width: 350px;">
-                    <div class="team-avatar">🧬</div>
-                    <h4>Perfil Bioquímico</h4>
-                    <p>Próxima Integración</p>
-                    <div class="role-desc">Fortaleciendo el modelado predictivo y la comprensión íntima de las complejas dinámicas de la digestión anaeróbica.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer style="text-align: center; padding: 40px; border-top: 1px solid var(--glass-border); margin-top: 50px;">
-        <div class="logo" style="font-size: 1.5rem; margin-bottom: 10px;">Bio<span>vertia</span></div>
-        <p style="color: var(--text-secondary);">© 2026 Biovertia. Liderando el Biogás 2.0 en Latinoamérica.</p>
+    <footer style="background: var(--green-900); color: var(--text-light); text-align: center; padding: 50px 20px;">
+        <div class="logo" style="font-size: 2rem; margin-bottom: 10px;">Bio<span style="color: var(--green-400);">vertia</span></div>
+        <p style="margin:0; color: var(--green-100);">© 2026 Biovertia. Liderando el Biogás 2.0 en Latinoamérica.</p>
     </footer>
 
 </body>
