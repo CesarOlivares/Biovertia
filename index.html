@@ -3,224 +3,234 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BioVertia | Economía Circular Inteligente</title>
+    <title>Biovertia | Biogás 2.0</title>
     <style>
-        /* Diseño Orgánico y Sustentable */
+        /* Estilos Base - Diseño Moderno Verde y Blanco */
         :root {
-            --primary-green: #2e5339;
-            --light-green: #e9f0ea;
-            --accent-leaf: #6b8e23;
-            --earth-brown: #8b5a2b;
-            --bg-color: #fcfbfa;
-            --text-main: #333333;
-            --text-muted: #555555;
+            --primary-green: #2E7D32; /* Verde profundo tecnológico */
+            --light-green: #E8F5E9; /* Verde muy suave para fondos */
+            --accent-green: #4CAF50; /* Verde brillante para botones */
+            --text-dark: #333333;
+            --white: #FFFFFF;
         }
 
-        body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+        body, html {
             margin: 0;
             padding: 0;
-            line-height: 1.7;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text-dark);
+            background-color: var(--white);
+            line-height: 1.6;
         }
 
-        /* Hero Section */
-        header {
-            background-color: var(--primary-green);
-            color: white;
-            padding: 5rem 2rem;
-            text-align: center;
-            border-bottom: 10px solid var(--accent-leaf);
-            border-radius: 0 0 30px 30px;
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-
-        header p {
-            font-size: 1.3rem;
-            max-width: 800px;
-            margin: 1.5rem auto;
-            color: var(--light-green);
-        }
-
-        /* Contenedor Principal */
+        h1, h2, h3 { margin-bottom: 10px; }
+        
         .container {
-            max-width: 1100px;
-            margin: -30px auto 0;
-            padding: 2rem;
-            position: relative;
-            z-index: 10;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        /* Tarjetas Orgánicas */
-        section {
-            background: white;
-            border-radius: 20px;
-            padding: 3rem;
-            margin-bottom: 3rem;
-            box-shadow: 0 10px 30px rgba(46, 83, 57, 0.08);
-            border: 1px solid #f0f0f0;
+        /* Cabecera / Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-green) 0%, var(--accent-green) 100%);
+            color: var(--white);
+            padding: 100px 0;
+            text-align: center;
         }
 
-        h2 {
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 30px auto;
+            opacity: 0.9;
+        }
+
+        /* Sección Problema vs Solución */
+        .section { padding: 80px 0; }
+        .bg-light { background-color: var(--light-green); }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2em;
             color: var(--primary-green);
-            font-size: 2rem;
-            margin-top: 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        h2::before {
-            content: "🌿";
-            font-size: 1.5rem;
+            margin-bottom: 50px;
         }
 
         .grid-2 {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 40px;
         }
 
-        /* Estadísticas e Impacto */
-        .impact-container {
+        .card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-green);
+        }
+
+        .card h3 { color: var(--primary-green); }
+
+        /* Sección Equipo */
+        .team-grid {
             display: flex;
-            justify-content: space-between;
-            gap: 1rem;
+            justify-content: center;
+            gap: 30px;
             flex-wrap: wrap;
-            margin-top: 2rem;
         }
 
-        .stat-box {
-            flex: 1;
-            min-width: 200px;
+        .team-member {
+            text-align: center;
             background: var(--light-green);
-            padding: 2rem;
-            border-radius: 15px;
+            padding: 20px;
+            border-radius: 12px;
+            width: 250px;
+        }
+
+        .team-member a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: var(--primary-green);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+            transition: background 0.3s;
+        }
+
+        .team-member a:hover { background-color: var(--accent-green); }
+
+        /* Sección Inversores / QR */
+        .investors-section {
             text-align: center;
-            border-bottom: 4px solid var(--accent-leaf);
+            padding: 60px 0;
+            background-color: var(--primary-green);
+            color: var(--white);
         }
 
-        .stat-box h3 {
-            color: var(--primary-green);
-            font-size: 2.5rem;
-            margin: 0;
+        .qr-container {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
         }
 
-        .stat-box p {
-            margin: 0.5rem 0 0;
-            font-weight: 600;
-            color: var(--earth-brown);
+        .qr-box {
+            background: var(--white);
+            padding: 15px;
+            border-radius: 10px;
+            color: var(--text-dark);
+            width: 200px;
         }
 
-        /* Listas */
-        ul {
-            list-style-type: none;
-            padding: 0;
+        .qr-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
         }
 
-        ul li {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid var(--light-green);
-            position: relative;
-            padding-left: 30px;
-        }
-
-        ul li::before {
-            content: "✓";
-            color: var(--accent-leaf);
+        .qr-box p {
+            margin: 10px 0 0 0;
             font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            padding: 3rem;
-            background: var(--primary-green);
-            color: var(--light-green);
-            margin-top: 4rem;
+            font-size: 0.9em;
         }
 
         /* Responsivo */
         @media (max-width: 768px) {
             .grid-2 { grid-template-columns: 1fr; }
-            header h1 { font-size: 2.5rem; }
-            section { padding: 2rem; }
+            .hero h1 { font-size: 2.2em; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>BioVertia</h1>
-        <p>Buscamos no solo la baja de costos y la CO2 neutralidad industrial, sino también empoderar a comunidades locales mediante el acceso a energía y biofertilizantes de alta calidad[cite: 10].</p>
+    <header class="hero">
+        <div class="container">
+            <h1>Biovertia</h1>
+            <p>El Sistema Operativo del Biogás 2.0. Transformamos la digestión anaeróbica en un proceso inteligente, escalable y predecible a través de ingeniería avanzada.</p>
+        </div>
     </header>
 
-    <div class="container">
-        
-        <section class="grid-2">
-            <div>
-                <h2>El Desafío Agroindustrial</h2>
-                <p>Chile actualmente enfrenta un desafío en la gestión de residuos agroindustriales: solo en la industria vitivinícola, desechos como el orujo de uva suelen sub-utilizarse, mientras que el suero de leche lácteo carece de regulaciones de tratamiento eficientes[cite: 6].</p>
-                <p>La oportunidad reside en la biometanización; sin embargo, la generación de biogás actual está un punto muerto debido a la alta tasa de fallo por la inestabilidad de los procesos biológicos[cite: 7].</p>
-            </div>
-            <div>
-                <h2>Nuestra Solución (Propuesta de Valor)</h2>
-                <p>BioVertia es una solución biotecnológica e industrial que integra un reactor de co-digestión anaeróbica de estado sólido (SS-AD) con un sistema avanzado de control adaptativo[cite: 24].</p>
-                <p>Valorizamos el orujo de uva y suero de leche en una mezcla optimizada de 3:1[cite: 25]. El núcleo innovador radica en el uso de algoritmos de control para monitorear y estabilizar en tiempo real variables críticas como el pH, resolviendo el problema de la alta tasa de falla convencionales[cite: 26].</p>
-            </div>
-        </section>
-
-        <section>
-            <h2>Impacto Socio-Ambiental (ODS)</h2>
-            <p>Este proyecto se alinea estratégicamente con los Objetivos de Desarrollo Sostenible[cite: 45]:</p>
-            <ul>
-                <li><strong>ODS 7 (Energía no contaminante):</strong> Sustituimos el consumo de GLP fósil por biogás generado in situ[cite: 46].</li>
-                <li><strong>ODS 12 (Producción y consumo responsables):</strong> Cierre del ciclo técnico on-site, eliminando logística hacia vertederos[cite: 47].</li>
-                <li><strong>ODS 13 (Acción por el clima):</strong> Reducción de la huella de carbono superior al 80% y regeneración de suelos con biofertilizante premium[cite: 48].</li>
-            </ul>
-
-            <div class="impact-container">
-                <div class="stat-box">
-                    <h3>158.4</h3>
-                    <p>Ton/Año Residuos Evitados [cite: 54]</p>
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">El Desafío: Operar a Ciegas</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>La Realidad del Campo</h3>
+                    <p>Hoy, muchos reactores fallan porque el técnico en terreno se enfrenta a una "caja negra". Conoce las recetas y cantidades, pero no tiene visibilidad real del estado bioquímico interno del digestor.</p>
                 </div>
-                <div class="stat-box">
-                    <h3>225</h3>
-                    <p>Familias Beneficiadas [cite: 55]</p>
-                </div>
-                <div class="stat-box">
-                    <h3>8.3</h3>
-                    <p>Meses (ROI Proyectado) [cite: 61]</p>
+                <div class="card">
+                    <h3>Falta de Herramientas</h3>
+                    <p>Sin datos en tiempo real, las inestabilidades biológicas se detectan cuando el daño ya es irreversible. Esto no es un fallo humano, es la falta de herramientas tecnológicas adecuadas para el operador.</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section>
-            <h2>Modelo de Negocios y Escalabilidad</h2>
-            <p>Nos enfocamos en la Pyme Agroindustrial de la zona centro-sur (Viñas y Queserías), un segmento desatendido por la ingeniería tradicional, transformando un costo logístico hundido en un activo circular[cite: 90, 91, 108].</p>
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Nuestra Promesa: Inteligencia Operativa</h2>
+            <div class="grid-2">
+                <div>
+                    <h3>1. Sensorización y Machine Learning</h3>
+                    <p>Implementamos hardware de precisión para capturar datos vitales del proceso. Nuestros algoritmos de IA analizan esta información para predecir inestabilidades con hasta 24 horas de anticipación.</p>
+                </div>
+                <div>
+                    <h3>2. KPIs Simples y Accionables</h3>
+                    <p>Traducimos la complejidad bioquímica en indicadores visuales simples. Entregamos al operario una interfaz amigable que le indica exactamente el estado del sistema y qué acción correctiva tomar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Ingeniería Detrás del Proyecto</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h3>César Olivares</h3>
+                    <p>Ingeniería Mecatrónica</p>
+                    <a href="www.linkedin.com/in/cesar-olivares-lavalovich-706311396" target="_blank">Ver LinkedIn</a>
+                </div>
+                <div class="team-member">
+                    <h3>Benjamín Saavedra</h3>
+                    <p>Ingeniería Eléctrica</p>
+                    <a href="https://www.linkedin.com/in/benjamín-saavedra-ingenieria-electrica/" target="_blank">Ver LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="investors-section">
+        <div class="container">
+            <h2>Conecta con Nosotros</h2>
+            <p>Escanea los códigos para acceder a nuestros perfiles profesionales y seguir el desarrollo de Biovertia.</p>
             
-            <p>Biovertia opera bajo un modelo B2B de alto impacto garantizando escalabilidad mediante un modelo financiero híbrido[cite: 134, 135]:</p>
-            <ul>
-                <li><strong>Venta de Hardware (CAPEX):</strong> Módulos de tratamiento on-site ($1,35M CLP por unidad de 450kg)[cite: 135].</li>
-                <li><strong>Suscripción SaaS (OPEX):</strong> Mensualidad ($45k-$60k CLP) por monitoreo biotecnológico remoto preventivo[cite: 135].</li>
-                <li><strong>Ventaja Competitiva:</strong> Algoritmo de Monitoreo Preventivo y secreto industrial del consorcio bacteriano[cite: 109].</li>
-            </ul>
-        </section>
-
-    </div>
-
-    <footer>
-        <p>&copy; 2026 BioVertia. Tecnología Mecatrónica para la Economía Circular.</p>
-    </footer>
+            <div class="qr-container">
+                <div class="qr-box">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.linkedin.com/company/biovertia/?viewAsMember=true" alt="QR Biovertia">
+                    <p>Biovertia (Compañía)</p>
+                </div>
+                <div class="qr-box">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.linkedin.com/in/cesar-olivares-lavalovich-706311396" alt="QR César">
+                    <p>César Olivares</p>
+                </div>
+                <div class="qr-box">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.linkedin.com/in/benjam%C3%ADn-saavedra-ingenieria-electrica/" alt="QR Benjamín">
+                    <p>Benjamín Saavedra</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
 </body>
 </html>
