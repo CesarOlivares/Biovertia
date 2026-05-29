@@ -18,7 +18,6 @@
             --green-400: #34d399;
             --green-100: #d1fae5;
             --text-dark: var(--green-900);
-            --text-muted: var(--green-800);
             --text-light: #ffffff;
         }
 
@@ -54,13 +53,13 @@
         .logo { font-size: 2rem; font-weight: 900; letter-spacing: -1px; color: var(--text-light); }
         .logo span { color: var(--green-500); }
 
-        /* HERO SECTION (Fondo de Imagen Dinámico) */
+        /* HERO SECTION */
         .hero {
             height: 100vh;
             min-height: 800px;
             display: flex;
             align-items: center;
-            background: linear-gradient(180deg, rgba(2, 44, 34, 0.7) 0%, rgba(2, 44, 34, 0.9) 100%), url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            background: linear-gradient(180deg, rgba(2, 44, 34, 0.75) 0%, rgba(2, 44, 34, 0.95) 100%), url('https://images.pexels.com/photos/257775/pexels-photo-257775.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
             position: relative;
             background-attachment: fixed;
         }
@@ -106,24 +105,95 @@
         .split-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
         .split-image:hover img { transform: scale(1.05); }
 
-        /* BIOVERTIA CORE */
-        .centerpiece-section { background: var(--green-900); color: var(--text-light); padding: 100px 0; }
-        .centerpiece-section h2 { color: var(--text-light); }
-        .center-layout { position: relative; max-width: 1000px; margin: 80px auto 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
-        .biovertia-core {
-            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            background: var(--bg-white); color: var(--green-900); width: 240px; height: 240px; border-radius: 50%;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            font-size: 2.2rem; font-weight: 900; box-shadow: 0 0 0 15px rgba(16,185,129,0.2), 0 20px 40px rgba(0,0,0,0.4); z-index: 10;
+        /* =======================================================
+           NUEVO DISEÑO: BIOVERTIA CORE ENGINE
+           ======================================================= */
+        .core-section {
+            background: #011611; /* Fondo ultra oscuro para dar contraste */
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
         }
-        .biovertia-core span { font-size: 1rem; color: var(--green-600); font-weight: 800; text-transform: uppercase; letter-spacing: 2px; }
-        
-        .feature-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 30px; border-radius: 20px; transition: all 0.3s ease; backdrop-filter: blur(5px); }
-        .feature-item:hover { transform: translateY(-5px); background: rgba(16,185,129,0.1); border-color: var(--green-500); }
-        .feature-item.left { text-align: right; padding-right: 70px; }
-        .feature-item.right { text-align: left; padding-left: 70px; }
 
-        /* TIMELINE ROADMAP */
+        .core-section h2 { color: var(--text-light); }
+
+        .core-grid {
+            display: grid;
+            grid-template-columns: 1fr 320px 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .core-column { display: flex; flex-direction: column; gap: 30px; }
+
+        /* Tarjetas de características (Glassmorphism) */
+        .core-card {
+            background: rgba(16, 185, 129, 0.05);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            border-left: 4px solid var(--green-500);
+            border-radius: 16px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .core-card:hover {
+            background: rgba(16, 185, 129, 0.1);
+            border-color: var(--green-400);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.15);
+        }
+        .core-card .icon { font-size: 2.5rem; margin-bottom: 15px; }
+        .core-card h3 { color: var(--text-light); font-size: 1.4rem; margin-bottom: 10px; }
+        .core-card p { color: var(--green-100); font-size: 1rem; margin: 0; line-height: 1.5; }
+
+        /* Orbe Central Animado */
+        .core-orb-wrapper {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        .core-orb {
+            width: 240px;
+            height: 240px;
+            background: radial-gradient(circle at 30% 30%, var(--green-400), var(--green-800));
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            box-shadow: 0 0 60px rgba(16, 185, 129, 0.5), inset 0 0 20px rgba(255,255,255,0.3);
+            z-index: 5;
+            text-align: center;
+        }
+        .core-orb h4 { color: var(--green-900); font-size: 1.8rem; font-weight: 900; margin: 0; letter-spacing: -1px; }
+        .core-orb span { color: var(--green-900); font-weight: 800; letter-spacing: 2px; font-size: 0.85rem; text-transform: uppercase; opacity: 0.9;}
+
+        /* Anillos de animación */
+        .orb-ring {
+            position: absolute;
+            top: -25px; left: -25px; right: -25px; bottom: -25px;
+            border: 2px dashed rgba(16, 185, 129, 0.4);
+            border-radius: 50%;
+            animation: spin 20s linear infinite;
+            pointer-events: none;
+        }
+        .orb-ring.reverse {
+            top: -50px; left: -50px; right: -50px; bottom: -50px;
+            border: 2px solid rgba(16, 185, 129, 0.1);
+            border-top: 2px solid var(--green-500);
+            border-bottom: 2px solid var(--green-500);
+            animation: spin-reverse 15s linear infinite;
+        }
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        @keyframes spin-reverse { 100% { transform: rotate(-360deg); } }
+
+
+        /* ROADMAP */
         .timeline-section { background: var(--bg-white); }
         .timeline { display: flex; justify-content: space-between; align-items: flex-start; position: relative; margin-top: 80px; }
         .timeline::before { content: ''; position: absolute; top: 35px; left: 0; right: 0; height: 4px; background: var(--green-100); z-index: 0; }
@@ -142,11 +212,15 @@
         /* Banner Tracción USACH */
         .traction-banner { background: var(--green-900); color: var(--text-light); padding: 30px; border-radius: 20px; margin-top: 60px; display: flex; align-items: center; justify-content: space-between; border-left: 8px solid var(--green-500); }
 
+        /* RESPONSIVIDAD */
         @media (max-width: 992px) {
             .split-row, .split-row:nth-child(even) { flex-direction: column; }
-            .center-layout { grid-template-columns: 1fr; gap: 20px; }
-            .biovertia-core { position: static; transform: none; margin: 40px auto; width: 200px; height: 200px; }
-            .feature-item.left, .feature-item.right { text-align: center; padding: 30px; }
+            
+            /* Ajuste del Core Grid para Móviles */
+            .core-grid { grid-template-columns: 1fr; text-align: center; gap: 40px; }
+            .center-column { order: -1; margin-bottom: 30px; } /* Mueve el orbe arriba en móviles */
+            .core-card { border-left: none; border-top: 4px solid var(--green-500); text-align: center; }
+            
             .grid-3 { grid-template-columns: 1fr; }
             .timeline { flex-direction: column; }
             .timeline::before { width: 4px; height: 100%; left: 50%; top: 0; transform: translateX(-50%); }
@@ -172,7 +246,7 @@
         </div>
     </header>
 
-    <!-- EL PROBLEMA (Card Elevada) -->
+    <!-- EL PROBLEMA -->
     <div class="container">
         <div class="problem-card text-center">
             <h2>El 91% de las plantas de biogás falla por operar "a ciegas"</h2>
@@ -202,14 +276,14 @@
         </div>
     </div>
 
-    <!-- CÓMO FUNCIONA (Narrativa Visual) -->
+    <!-- CÓMO FUNCIONA -->
     <section class="split-section">
         <div class="container">
             <div class="text-center" style="margin-bottom: 60px;">
                 <h2 style="color: var(--green-900); font-size: 3.5rem;">Y ahí es donde entra <span class="highlight">Biovertia.</span></h2>
             </div>
 
-            <!-- Fila 1: El Nicho -->
+            <!-- Fila 1: El Nicho (Foto de Viñedo corregida) -->
             <div class="split-row">
                 <div class="split-text">
                     <h2 style="color: var(--green-900);">Validado en el Terreno Real</h2>
@@ -217,57 +291,79 @@
                     <p>Al aplicar nuestra tecnología en este nicho específico, logramos que la economía circular sea finalmente predecible, escalable y altamente rentable para la industria vitivinícola y láctea.</p>
                 </div>
                 <div class="split-image">
-                    <img src="https://images.unsplash.com/photo-1591181516281-226685ec1608?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Viñedos y Orujo">
+                    <!-- Enlace de Pexels altamente estable -->
+                    <img src="https://images.pexels.com/photos/600114/pexels-photo-600114.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Viñedos y Orujo">
                 </div>
             </div>
 
-            <!-- Fila 2: El Hardware/Software -->
+            <!-- Fila 2: El Hardware/Software (Foto de Industria corregida) -->
             <div class="split-row">
                 <div class="split-text">
                     <h2 style="color: var(--green-900);">Sensorización e Inteligencia</h2>
                     <p>No construimos tanques vacíos. Desarrollamos el <strong>hardware IoT de precisión</strong> que lee el pulso del biorreactor, y los modelos de <strong>Machine Learning</strong> que aprenden de él.</p>
                     <ul style="list-style: none; padding: 0; margin-top: 20px;">
-                        <li style="margin-bottom: 10px; font-weight: 600;">✔️ 0 Fallas prevenibles al año.</li>
-                        <li style="margin-bottom: 10px; font-weight: 600;">✔️ Predicción de anomalías con 24h de anticipación.</li>
-                        <li style="margin-bottom: 10px; font-weight: 600;">✔️ KPIs claros para el operador de campo.</li>
+                        <li style="margin-bottom: 10px; font-weight: 600; color: var(--green-800);">✔️ 0 Fallas prevenibles al año.</li>
+                        <li style="margin-bottom: 10px; font-weight: 600; color: var(--green-800);">✔️ Predicción de anomalías con 24h de anticipación.</li>
+                        <li style="margin-bottom: 10px; font-weight: 600; color: var(--green-800);">✔️ KPIs claros para el operador de campo.</li>
                     </ul>
                 </div>
                 <div class="split-image">
-                    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Planta Industrial Tecnológica">
+                    <!-- Enlace de Pexels altamente estable -->
+                    <img src="https://images.pexels.com/photos/258154/pexels-photo-258154.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="Instalación Industrial">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- BIOVERTIA CORE ENGINE -->
-    <section class="centerpiece-section">
+    <!-- NUEVO DISEÑO: BIOVERTIA CORE ENGINE -->
+    <section class="core-section">
         <div class="container">
-            <div class="text-center" style="margin-bottom: 20px;">
-                <h2 style="font-size: 3rem;">Convertimos una caja negra en un sistema predecible</h2>
+            <div class="text-center">
+                <h2 style="font-size: 3.5rem; margin-bottom: 15px;">El Ecosistema <span class="highlight">Biovertia</span></h2>
+                <p style="color: var(--green-100); max-width: 700px; margin: 0 auto; font-size: 1.2rem;">
+                    Reemplazamos la "caja negra" con una arquitectura ciberfísica que transforma los datos crudos en decisiones autónomas.
+                </p>
             </div>
             
-            <div class="center-layout">
-                <div class="feature-item left">
-                    <h3 style="color: var(--green-400);">Monitoreo Continuo</h3>
-                    <p style="color: var(--green-100);">Sensores IoT que leen el pulso bioquímico 24/7.</p>
-                </div>
-                <div class="feature-item right">
-                    <h3 style="color: var(--green-400);">Aprendizaje Predictivo</h3>
-                    <p style="color: var(--green-100);">Machine Learning que anticipa anomalías con 24h de ventaja.</p>
+            <div class="core-grid">
+                <!-- Columna Izquierda -->
+                <div class="core-column">
+                    <div class="core-card">
+                        <div class="icon">📡</div>
+                        <h3>Monitoreo Continuo</h3>
+                        <p>Sensores IoT instalados en el reactor que leen el pulso bioquímico 24/7 sin interrupciones.</p>
+                    </div>
+                    <div class="core-card">
+                        <div class="icon">⚙️</div>
+                        <h3>Control Activo</h3>
+                        <p>Ajuste autónomo y guiado de parámetros para estabilizar la biología en tiempo real.</p>
+                    </div>
                 </div>
                 
-                <div class="biovertia-core">
-                    BIOVERTIA
-                    <span>Core Engine</span>
+                <!-- Columna Central (Orbe Tecnológico) -->
+                <div class="core-column center-column">
+                    <div class="core-orb-wrapper">
+                        <div class="core-orb">
+                            <div class="orb-ring"></div>
+                            <div class="orb-ring reverse"></div>
+                            <h4>BIOVERTIA</h4>
+                            <span>Core Engine</span>
+                        </div>
+                    </div>
                 </div>
                 
-                <div class="feature-item left">
-                    <h3 style="color: var(--green-400);">Control Preciso</h3>
-                    <p style="color: var(--green-100);">Parámetros guiados para estabilizar la biología en tiempo real.</p>
-                </div>
-                <div class="feature-item right">
-                    <h3 style="color: var(--green-400);">KPIs Entendibles</h3>
-                    <p style="color: var(--green-100);">Métricas simples y accionables para el operador de planta.</p>
+                <!-- Columna Derecha -->
+                <div class="core-column">
+                    <div class="core-card">
+                        <div class="icon">🧠</div>
+                        <h3>IA Predictiva</h3>
+                        <p>Modelos de Machine Learning que anticipan anomalías críticas con 24 horas de ventaja.</p>
+                    </div>
+                    <div class="core-card">
+                        <div class="icon">📊</div>
+                        <h3>Métricas Accionables</h3>
+                        <p>KPIs simples traducidos para empoderar al operador de planta y facilitar su trabajo.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -276,7 +372,7 @@
     <!-- ROADMAP -->
     <section class="section timeline-section">
         <div class="container">
-            <h2 class="text-center" style="font-size: 3rem; color: var(--green-900);">En qué etapa estamos</h2>
+            <h2 class="text-center" style="font-size: 3rem; color: var(--green-900);">Nuestra Hoja de Ruta</h2>
             
             <div class="timeline">
                 <div class="timeline-step active">
